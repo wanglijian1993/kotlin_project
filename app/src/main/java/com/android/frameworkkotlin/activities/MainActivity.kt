@@ -30,8 +30,7 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       Debug.startMethodTracing();
-        setContentView(R.layout.activity_main)
+         setContentView(R.layout.activity_main)
         var adapter = ContentAdapter(supportFragmentManager,initFragments())
         vp_content.setAdapter(adapter)
         vp_content.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL)
@@ -40,7 +39,7 @@ class MainActivity : BaseActivity() {
         }
         vp_content.registerOnPageChangeCallback(onPageChangeCallBack)
         tl_bottom_control.addOnTabSelectedListener(onTabSelectCallBack)
-        Debug.startMethodTracing()
+
     }
 
 
