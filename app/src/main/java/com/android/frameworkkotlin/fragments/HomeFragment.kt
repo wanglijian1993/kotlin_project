@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.android.frameworkkotlin.R
 import com.android.frameworkkotlin.base.BaseFragment
-import kotlin.properties.Delegates
+import com.android.frameworkkotlin.bean.BannerBean
+import com.android.frameworkkotlin.network.ICallBack
+
+import com.android.frameworkkotlin.network.OkHttp_GET
+import com.android.frameworkkotlin.network.banner_url
 
 /**
  * 当前类的注释:首页Fragment
@@ -24,7 +28,25 @@ import kotlin.properties.Delegates
       container: ViewGroup?,
       savedInstanceState: Bundle?
    ): View? {
-
+       requestNetwork()
       return inflater.inflate(R.layout.fragment_home,null)
    }
+    fun requestNetwork(){
+        OkHttp_GET(banner_url,callbackImp,BannerBean::class.java)
+    }
+
+    val callbackImp=object:ICallBack<BannerBean>{
+
+        override fun callbackFail(msg: String) {
+            println("error:"+msg)
+
+        }
+
+        override fun callbackSuccess(t: BannerBean) {
+            println("success:"+t.toString())
+        }
+
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.android.frameworkkotlin.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Debug
 import android.view.View
 import androidx.collection.ArraySet
 import androidx.fragment.app.Fragment
@@ -9,6 +10,7 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.android.frameworkkotlin.R
 import com.android.frameworkkotlin.adapter.ContentAdapter
+import com.android.frameworkkotlin.base.BaseActivity
 import com.android.frameworkkotlin.fragments.HomeFragment
 import com.android.frameworkkotlin.fragments.InformationFragment
 import com.android.frameworkkotlin.fragments.MineFragment
@@ -21,11 +23,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+/**
+ * 首页MainActivity
+ */
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+       Debug.startMethodTracing();
         setContentView(R.layout.activity_main)
         var adapter = ContentAdapter(supportFragmentManager,initFragments())
         vp_content.setAdapter(adapter)
@@ -35,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         }
         vp_content.registerOnPageChangeCallback(onPageChangeCallBack)
         tl_bottom_control.addOnTabSelectedListener(onTabSelectCallBack)
+        Debug.startMethodTracing()
     }
 
 
@@ -63,23 +69,23 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPageSelected(position: Int) {
             super.onPageSelected(position)
-            tl_bottom_control.setScrollPosition(position,0.0f,true)
-
+            tl_bottom_control.getTabAt(position)?.select()
         }
     }
     val onTabSelectCallBack=object : TabLayout.OnTabSelectedListener{
         override fun onTabReselected(p0: TabLayout.Tab?) {
-
+         println("onTabReselected-----"+p0?.position);
         }
 
         override fun onTabUnselected(p0: TabLayout.Tab?) {
+            println("onTabUnselected-----"+p0?.position);
 
         }
 
         override fun onTabSelected(p0: TabLayout.Tab?) {
-            p0?.apply {
-                vp_content.setCurrentItem(position)
-            }
+            println("onTabSelected-----"+p0?.position);
+            p0?.position?.let { vp_content.setCurrentItem(it) }
+
         }
     }
 

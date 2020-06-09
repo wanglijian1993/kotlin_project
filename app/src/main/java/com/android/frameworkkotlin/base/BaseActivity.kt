@@ -7,4 +7,4 @@ import androidx.appcompat.app.AppCompatActivity
  * 作者：WangLiJian on 2020/4/5.
  * 邮箱：wanglijian1214@gmail.com
  */
- class BaseActivity :AppCompatActivity()
+ abstract class BaseActivity :AppCompatActivity()

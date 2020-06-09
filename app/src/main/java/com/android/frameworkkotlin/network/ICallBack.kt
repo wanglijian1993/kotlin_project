@@ -5,10 +5,11 @@ package com.android.frameworkkotlin.network
  * 作者：WangLiJian on 2020/3/29.
  * 邮箱：wanglijian1214@gmail.com
  */
-interface ICallBack<Any> {
+ interface ICallBack<T> {
 
-    fun callbackSuccess(t : Any?)
+    fun callbackSuccess(t : T)
 
     fun callbackFail(msg : String)
 
 }
+
