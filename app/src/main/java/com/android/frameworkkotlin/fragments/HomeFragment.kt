@@ -8,9 +8,7 @@ import com.android.frameworkkotlin.R
 import com.android.frameworkkotlin.base.BaseFragment
 import com.android.frameworkkotlin.bean.BannerBean
 import com.android.frameworkkotlin.network.ICallBack
-
-import com.android.frameworkkotlin.network.OkHttp_GET
-import com.android.frameworkkotlin.network.banner_url
+import com.android.frameworkkotlin.network.MyRetrofit
 
 /**
  * 当前类的注释:首页Fragment
@@ -28,12 +26,10 @@ import com.android.frameworkkotlin.network.banner_url
       container: ViewGroup?,
       savedInstanceState: Bundle?
    ): View? {
-       requestNetwork()
+       MyRetrofit.api.requestBanner()
       return inflater.inflate(R.layout.fragment_home,null)
    }
-    fun requestNetwork(){
-        OkHttp_GET(banner_url,callbackImp,BannerBean::class.java)
-    }
+
 
     val callbackImp=object:ICallBack<BannerBean>{
 
