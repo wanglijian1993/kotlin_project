@@ -1,14 +1,19 @@
 package com.android.frameworkkotlin.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.android.frameworkkotlin.R
 import com.android.frameworkkotlin.base.BaseFragment
 import com.android.frameworkkotlin.bean.BannerBean
-import com.android.frameworkkotlin.network.ICallBack
 import com.android.frameworkkotlin.network.MyRetrofit
+import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.layout_page_content.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * 当前类的注释:首页Fragment
@@ -17,7 +22,7 @@ import com.android.frameworkkotlin.network.MyRetrofit
  */
    class HomeFragment:BaseFragment(){
     companion object {
-     var instance :HomeFragment = HomeFragment();
+     var instance :HomeFragment = HomeFragment()
     }
 
 
@@ -26,23 +31,20 @@ import com.android.frameworkkotlin.network.MyRetrofit
       container: ViewGroup?,
       savedInstanceState: Bundle?
    ): View? {
-       MyRetrofit.api.requestBanner()
+       requestBanner()
       return inflater.inflate(R.layout.fragment_home,null)
    }
 
+    fun requestBanner(){
+        MyRetrofit.api.requestBanner().enqueue(object : Callback<BannerBean>{
+            override fun onFailure(call: Call<BannerBean>, t: Throwable) {
+            }
 
-    val callbackImp=object:ICallBack<BannerBean>{
-
-        override fun callbackFail(msg: String) {
-            println("error:"+msg)
-
-        }
-
-        override fun callbackSuccess(t: BannerBean) {
-            println("success:"+t.toString())
-        }
-
+            override fun onResponse(call: Call<BannerBean>, response: Response<BannerBean>) {
+                val result = response.body()
+                tv_home.setText(result!!.data!!.get(0).title)
+            }
+        })
     }
-
 
 }

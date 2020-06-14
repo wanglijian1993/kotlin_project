@@ -1,5 +1,7 @@
 package com.android.frameworkkotlin.network
 
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -12,7 +14,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MyRetrofit {
 
     companion object{
+        //日志拦截器
+        var httpLoggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        //Okhttp对象
+        var okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(httpLoggingInterceptor)
+            .build()
         val retrofit = Retrofit.Builder().baseUrl(baseurl)
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create()).build()
         val api= retrofit.create(ApiServices::class.java)
     }
