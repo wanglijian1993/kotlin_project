@@ -1,19 +1,16 @@
 package com.android.frameworkkotlin.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.android.frameworkkotlin.R
 import com.android.frameworkkotlin.base.BaseFragment
-import com.android.frameworkkotlin.bean.BannerBean
 import com.android.frameworkkotlin.network.MyRetrofit
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.layout_page_content.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * 当前类的注释:首页Fragment
@@ -36,15 +33,11 @@ import retrofit2.Response
    }
 
     fun requestBanner(){
-        MyRetrofit.api.requestBanner().enqueue(object : Callback<BannerBean>{
-            override fun onFailure(call: Call<BannerBean>, t: Throwable) {
-            }
+        lifecycleScope.launch(Dispatchers.Main){
+          val banner=MyRetrofit.api.requestBanner()
+            tv_home.text=banner.data?.get(0)?.title
+        }
 
-            override fun onResponse(call: Call<BannerBean>, response: Response<BannerBean>) {
-                val result = response.body()
-                tv_home.setText(result!!.data!!.get(0).title)
-            }
-        })
     }
 
 }

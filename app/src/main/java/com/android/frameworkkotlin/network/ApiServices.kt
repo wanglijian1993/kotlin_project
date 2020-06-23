@@ -1,8 +1,6 @@
 package com.android.frameworkkotlin.network
 
 import com.android.frameworkkotlin.bean.BannerBean
-import okhttp3.HttpUrl
-import retrofit2.Call
 import retrofit2.http.GET
 
 /**
@@ -12,5 +10,5 @@ import retrofit2.http.GET
  */
 interface ApiServices {
      @GET(banner_url)
-     fun requestBanner(): Call<BannerBean>;
+    suspend fun requestBanner():BannerBean
 }

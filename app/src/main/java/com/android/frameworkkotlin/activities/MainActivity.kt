@@ -21,7 +21,7 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
          setContentView(R.layout.activity_main)
-        val adapter = ContentAdapter(supportFragmentManager,initFragments())
+        val adapter = ContentAdapter(this,initFragments())
         vp_content.adapter = adapter
         vp_content.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         tabDatas.forEach{
@@ -60,7 +60,8 @@ class MainActivity : BaseActivity() {
 
         override fun onTabSelected(p0: TabLayout.Tab?) {
             println("onTabSelected-----"+p0?.position)
-            p0?.position?.let { vp_content.currentItem = it }
+            p0?.position?.let { vp_content.currentItem = it
+            }
 
         }
     }
