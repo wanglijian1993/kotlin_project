@@ -16,12 +16,8 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnvBottomMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fafafa"
-        app:labelVisibilityMode="labeled"
-        app:itemTextColor="@drawable/selector_main_bottom_text_bg"
-        app:itemBackground="@android:color/white"
+        style="@style/Shrine.BottomNavView"
         app:menu="@menu/menu_main_bottom"
+        app:labelVisibilityMode="labeled"
         />
 </LinearLayout>

@@ -1,11 +1,29 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Base.Theme.Shrine">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="Base.Theme.Shrine" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+    </style>
+    <style name="Shrine.BottomNavView" parent="Base.Shrine.BottomNavView"/>
 
+    <!--home page bottomNavigation style -->
+    <style name="Base.Shrine.BottomNavView" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/shrine_bottom_nav_view_height</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:theme">@style/ThemeOverlay.Shrine.BottomNavView</item>
+    </style>
+    <style name="ThemeOverlay.Shrine.BottomNavView" parent="">
+        <item name="colorPrimary">@color/colorAccent</item>
+    </style>
 </resources>

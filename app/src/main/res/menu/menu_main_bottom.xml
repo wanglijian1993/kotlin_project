@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_main_bottom_home"
-        android:title="首页" />
+        android:title="首页"
+        android:enabled="true"
+        android:icon="@mipmap/ic_main_menu_home"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/menu_main_bottom_information"
-        android:title="咨询" />
+        android:title="咨询"
+        android:enabled="true"
+        android:icon="@mipmap/ic_main_menu_find"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/menu_main_botton_video"
-        android:title="视频" />
+        android:icon="@mipmap/ic_main_menu_video"
+        android:title="视频"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        />
     <item
         android:id="@+id/menu_main_botton_mine"
-        android:title="我的" />
+        android:icon="@mipmap/ic_main_menu_mine"
+        android:title="我的"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        />
 </menu>
