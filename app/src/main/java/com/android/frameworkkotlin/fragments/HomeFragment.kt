@@ -1,5 +1,6 @@
 package com.android.frameworkkotlin.fragments
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ import kotlinx.coroutines.launch
  * 邮箱：wanglijian1214@gmail.com
  */
    class HomeFragment:BaseFragment(){
+
     companion object {
      var instance :HomeFragment = HomeFragment()
     }

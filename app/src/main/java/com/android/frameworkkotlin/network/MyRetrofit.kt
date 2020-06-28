@@ -1,5 +1,6 @@
 package com.android.frameworkkotlin.network
 
+import android.annotation.SuppressLint
 import com.android.MyApplication
 import com.android.frameworkkotlin.utils.NetworkUtil
 import okhttp3.*
@@ -7,7 +8,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
+import java.security.SecureRandom
+import java.security.cert.CertificateException
+import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.*
 
 /**
  * 当前类的注释:封装Retrofit
@@ -64,8 +69,60 @@ object MyRetrofit {
             .connectTimeout(60L, TimeUnit.SECONDS)
             .readTimeout(60L, TimeUnit.SECONDS)
             .writeTimeout(60L, TimeUnit.SECONDS)
-            .build()
+            .sslSocketFactory(createSSLSocketFactory())
+            .hostnameVerifier(TrustAllHostnameVerifier())
+        .build()
     }
+
+    /**
+     * 默认信任所有的证书
+     * TODO 最好加上证书认证，主流App都有自己的证书
+     *
+     * @return
+     */
+    @SuppressLint("TrulyRandom")
+    private fun createSSLSocketFactory(): SSLSocketFactory? {
+        var sSLSocketFactory: SSLSocketFactory? = null
+        try {
+            val sc = SSLContext.getInstance("TLS")
+            sc.init(
+                null,
+                arrayOf(TrustAllManager()),
+                SecureRandom()
+            )
+            sSLSocketFactory = sc.socketFactory
+        } catch (e: Exception) {
+        }
+        return sSLSocketFactory
+    }
+    private class TrustAllManager : X509TrustManager {
+        @Throws(CertificateException::class)
+        override fun checkClientTrusted(
+            chain: Array<X509Certificate>,
+            authType: String
+        ) {
+        }
+
+        @Throws(CertificateException::class)
+        override fun checkServerTrusted(
+            chain: Array<X509Certificate>,
+            authType: String
+        ) {
+        }
+
+        override fun getAcceptedIssuers(): Array<X509Certificate?> {
+            return arrayOfNulls(0)
+        }
+    }
+    private class TrustAllHostnameVerifier : HostnameVerifier {
+        override fun verify(
+            hostname: String,
+            session: SSLSession
+        ): Boolean {
+            return true
+        }
+    }
+
     /**
      * 设置缓存
      */
