@@ -19,27 +19,27 @@ import kotlinx.coroutines.launch
  * 邮箱：wanglijian1214@gmail.com
  */
    class HomeFragment:BaseFragment(){
-
     companion object {
      var instance :HomeFragment = HomeFragment()
     }
 
+    override fun initLayout(): Int =R.layout.fragment_home
 
-   override fun onCreateView(
-      inflater: LayoutInflater,
-      container: ViewGroup?,
-      savedInstanceState: Bundle?
-   ): View? {
-       requestBanner()
-      return inflater.inflate(R.layout.fragment_home,null)
-   }
 
-    fun requestBanner(){
-        lifecycleScope.launch(Dispatchers.Main){
-          val banner=MyRetrofit.api.requestBanner()
-            tv_home.text=banner.data?.get(0)?.title
-        }
-
+    override fun initView() {
     }
+
+    override fun lazyLoad() {
+    }
+
+ override fun onCreateView(
+  inflater: LayoutInflater,
+  container: ViewGroup?,
+  savedInstanceState: Bundle?
+ ): View? {
+  return super.onCreateView(inflater, container, savedInstanceState)
+ }
+
+
 
 }

@@ -18,11 +18,24 @@ import com.android.frameworkkotlin.base.BaseFragment
       val instance =VideoFragment()
    }
 
+   override fun initLayout(): Int=R.layout.fragment_video
+
+   override fun initView() {
+
+   }
+
+   override fun lazyLoad() {
+
+   }
+
    override fun onCreateView(
       inflater: LayoutInflater,
       container: ViewGroup?,
       savedInstanceState: Bundle?
    ): View? {
-      return inflater.inflate(R.layout.fragment_video,null)
+
+      return super.onCreateView(inflater, container, savedInstanceState)
    }
+
+
 }

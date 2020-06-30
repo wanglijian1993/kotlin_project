@@ -16,11 +16,26 @@ import com.android.frameworkkotlin.base.BaseFragment
    companion object{
      val instance=MineFragment();
    }
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View? {
-    return inflater.inflate(R.layout.fragment_mine,null)
+
+  override fun initLayout(): Int =R.layout.fragment_mine
+
+  override fun initView() {
+
+
   }
+
+  override fun lazyLoad() {
+
+  }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+
 }

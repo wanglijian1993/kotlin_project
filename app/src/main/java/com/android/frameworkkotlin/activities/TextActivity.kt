@@ -17,7 +17,7 @@ class TextActivity : BaseActivity(), View.OnClickListener {
         button1.setOnClickListener(this)
         button2.setOnClickListener(this)
         button3.setOnClickListener(this)
-
+        button4.setOnClickListener(this)
     }
 
 
@@ -107,12 +107,42 @@ class TextActivity : BaseActivity(), View.OnClickListener {
         println("main: Now I can quit.")
     }
 
+    fun  lengthOfLongestSubstring(s:String):Int{
+        // 哈希集合，记录每个字符是否出现过
+        val occ:Set<Char> = setOf()
+        val n = s.length
+        // 右指针，初始值为 -1，相当于我们在字符串的左边界的左侧，还没有开始移动
+        var rk:Int = -1
+        var ans:Int = 0
+        for (i in 1.. s.length) {
+            if (i != 0) {
+                // 左指针向右移动一格，移除一个字符
+                occ.minus(s[i - 1]);
+            }
+            while (rk + 1 < n &&!occ.contains(s.get(rk + 1))) {
+                // 不断地移动右指针
+                occ.plus(s[rk + 1]);
+                ++rk;
+            }
+            // 第 i 到 rk 个字符是一个极长的无重复字符子串
+            ans = Math.max(ans, rk - i + 1);
+        }
+        println("value:")
+        occ.forEach{
+            println("char:$it")
+        }
+        println("length:"+ans)
+
+        return ans
+    }
+
     override fun onClick(p0: View?) {
         when (p0?.id) {
             R.id.button -> main()
             R.id.button1 -> main1()
             R.id.button2 -> join()
             R.id.button3 -> joinWait1()
+            R.id.button4 ->lengthOfLongestSubstring(button4.text.toString())
         }
     }
 
