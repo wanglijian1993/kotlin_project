@@ -25,6 +25,11 @@ abstract class BaseFragment:Fragment(){
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        lazyLoad()
+    }
+
     /**
      * 初始化视图
      */

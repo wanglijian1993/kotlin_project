@@ -29,14 +29,11 @@
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleGravity="top"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="pin"
-                    app:logo="@mipmap/ic_launcher_round"
                     app:title="首页"
-                    app:logoDescription="这是一个titile"
                     app:collapseIcon="@mipmap/ic_launcher"
                     app:subtitle="@string/app_name"
                     />
