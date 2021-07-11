@@ -12,15 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name="com.android.MyApplication">
+        <meta-data
+            android:name="CHANNEL_NAME"
+            android:value="${CHANNEL_VALUE}" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".activities.TextActivity">
-
         </activity>
     </application>
 

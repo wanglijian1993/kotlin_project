@@ -1,7 +1,7 @@
 package com.android.frameworkkotlin.network
 
-import com.android.frameworkkotlin.bean.BannerBean
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 /**
  * 当前类的注释:接口
@@ -9,6 +9,21 @@ import retrofit2.http.GET
  * 邮箱：wanglijian1214@gmail.com
  */
 interface ApiServices {
-     @GET(banner_url)
-    suspend fun requestBanner():BannerBean
+
+    companion object {
+        const val SERVER_URL = "https://wanandroid.com/"
+    }
+
+    /**
+     * 请求banner
+     */
+    @GET("banner/json")
+    suspend fun requestBanners()
+
+    /**
+     * 文章列表
+     */
+    @GET("article/list/{page}/json")
+    suspend fun requestArticle(@Path("page") page: Int = 0)
+
 }

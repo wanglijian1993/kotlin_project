@@ -17,12 +17,7 @@ abstract class BaseFragment:Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(initLayout(),container,false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initView()
+        return bindView()
     }
 
     override fun onResume() {
@@ -33,12 +28,7 @@ abstract class BaseFragment:Fragment(){
     /**
      * 初始化视图
      */
-    abstract fun initLayout():Int
-
-    /**
-     * 初始化 ViewI
-     */
-    abstract fun initView()
+    abstract fun bindView(): View
 
     /**
      * 懒加载 初始化数据

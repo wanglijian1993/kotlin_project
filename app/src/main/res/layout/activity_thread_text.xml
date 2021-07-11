@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/bn1"
+        android:layout_width="358dp"
+        android:layout_height="56dp"
+        android:text="第一个线程"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="11dp"
+        android:onClick="onClick" />
+
+    <Button
+        android:id="@+id/bn2"
+        android:layout_width="358dp"
+        android:layout_height="56dp"
+        android:onClick="onClick"
+        android:text="线程唤醒"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="80dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

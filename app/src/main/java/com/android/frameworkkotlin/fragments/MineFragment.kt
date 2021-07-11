@@ -1,11 +1,8 @@
 package com.android.frameworkkotlin.fragments
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import com.android.frameworkkotlin.R
 import com.android.frameworkkotlin.base.BaseFragment
+import com.android.frameworkkotlin.databinding.FragmentMineBinding
 
 /**
  * 当前类的注释:我的主页
@@ -13,29 +10,18 @@ import com.android.frameworkkotlin.base.BaseFragment
  * 邮箱：wanglijian1214@gmail.com
  */
   class MineFragment :BaseFragment(){
+    lateinit var mMineFragment: FragmentMineBinding
    companion object{
-     val instance=MineFragment();
+       val instance = MineFragment()
    }
 
-  override fun initLayout(): Int =R.layout.fragment_mine
-
-  override fun initView() {
+    override fun bindView(): View = FragmentMineBinding.inflate(layoutInflater).root
 
 
-  }
+    override fun lazyLoad() {
 
-  override fun lazyLoad() {
-
-  }
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-        return super.onCreateView(inflater, container, savedInstanceState)
     }
+
 
 
 }

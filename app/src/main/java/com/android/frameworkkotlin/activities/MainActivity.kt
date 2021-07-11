@@ -5,10 +5,10 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Lifecycle
 import com.android.frameworkkotlin.R
 import com.android.frameworkkotlin.base.BaseActivity
-import com.android.frameworkkotlin.fragments.HomeFragment
 import com.android.frameworkkotlin.fragments.InformationFragment
 import com.android.frameworkkotlin.fragments.MineFragment
 import com.android.frameworkkotlin.fragments.VideoFragment
+import com.android.frameworkkotlin.home.fragments.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 

@@ -9,9 +9,9 @@
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/menu_main_bottom_information"
-        android:title="咨询"
+        android:title="问答"
         android:enabled="true"
-        android:icon="@mipmap/ic_main_menu_find"
+        android:icon="@mipmap/ic_main_menu_ques"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/menu_main_botton_video"
