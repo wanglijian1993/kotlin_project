@@ -1,6 +1,7 @@
 package com.android.frameworkkotlin.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Lifecycle
 import com.android.frameworkkotlin.R
@@ -41,39 +42,31 @@ class MainActivity : BaseActivity() {
         when (id) {
             R.id.menu_main_bottom_home -> mHomeFragment?.let {
                 transaction.show(it)
-                transaction.setMaxLifecycle(it,Lifecycle.State.STARTED)
             } ?: HomeFragment.instance.let {
                 mHomeFragment = it
                 transaction.add(R.id.flContent, it, "home")
-                transaction.setMaxLifecycle(it,Lifecycle.State.STARTED)
             }
 
             R.id.menu_main_bottom_information ->
                 mInformationFragment?.let {
                     transaction.show(it)
-                    transaction.setMaxLifecycle(it,Lifecycle.State.STARTED)
                } ?: InformationFragment.instance.let {
                     mInformationFragment = it
                     transaction.add(R.id.flContent, it, "information")
-                    transaction.setMaxLifecycle(it,Lifecycle.State.STARTED)
                 }
             R.id.menu_main_botton_video ->
                 mVideoFragment?.let {
                     transaction.show(it)
-                    transaction.setMaxLifecycle(it,Lifecycle.State.STARTED)
               } ?: VideoFragment.instance.let {
                     mVideoFragment = it
                     transaction.add(R.id.flContent, it, "video")
-                    transaction.setMaxLifecycle(it,Lifecycle.State.STARTED)
                 }
             R.id.menu_main_botton_mine ->
                 mMineFragment?.let {
                     transaction.show(it)
-                    transaction.setMaxLifecycle(it,Lifecycle.State.STARTED)
                 } ?: MineFragment.instance.let {
                     mMineFragment = it
                     transaction.add(R.id.flContent, it, "mine")
-                    transaction.setMaxLifecycle(it,Lifecycle.State.STARTED)
 
                 }
             else -> {
@@ -82,6 +75,10 @@ class MainActivity : BaseActivity() {
         transaction.commit()
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.e("wlj","---main---onresume")
+    }
     /**
      * 隐藏所有的Fragment
      * @param transaction transaction

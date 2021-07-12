@@ -1,5 +1,8 @@
 package com.android.frameworkkotlin.network
 
+import com.android.frameworkkotlin.home.bean.ArticleData
+import com.android.frameworkkotlin.home.bean.ArticleList
+import com.android.frameworkkotlin.home.bean.ArticleResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -24,6 +27,6 @@ interface ApiServices {
      * 文章列表
      */
     @GET("article/list/{page}/json")
-    suspend fun requestArticle(@Path("page") page: Int = 0)
+    suspend fun requestArticle(@Path("page") page: Int = 0):ArticleResponse<ArticleData>
 
 }

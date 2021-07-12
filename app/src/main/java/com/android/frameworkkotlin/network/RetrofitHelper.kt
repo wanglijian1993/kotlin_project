@@ -31,7 +31,7 @@ class RetrofitHelper {
     /**
      *获取retrofit的实例
      */
-    fun getRetrofit(baseUrl: String): Retrofit {
+    private fun getRetrofit(baseUrl: String): Retrofit {
         return Retrofit.Builder()
             .baseUrl(baseUrl)  //自己配置
             .client(getOkHttpClient())
@@ -43,7 +43,7 @@ class RetrofitHelper {
         return getRetrofit(baseUrl).create(serviceClass)
     }
 
-    fun getOkHttpClient(): OkHttpClient {
+    private fun getOkHttpClient(): OkHttpClient {
         //添加一个log拦截器,打印所有的log
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         //可以设置请求过滤的水平,body,basic,headers

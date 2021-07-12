@@ -1,6 +1,7 @@
 package com.android.frameworkkotlin.base
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,6 +32,11 @@ abstract class BaseFragment:Fragment(){
     abstract fun bindView(): View
 
     /**
+     *创建ViewModel生成订阅者
+     */
+   abstract fun createObserver()
+
+   /**
      * 懒加载 初始化数据
      */
     abstract fun lazyLoad()

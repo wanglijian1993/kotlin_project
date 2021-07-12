@@ -1,8 +1,13 @@
 package com.android.frameworkkotlin.home.fragments
 
+import android.util.Log
 import android.view.View
+import androidx.lifecycle.Observer
 import com.android.frameworkkotlin.base.BaseFragment
 import com.android.frameworkkotlin.databinding.FragmentHomeBinding
+import com.android.frameworkkotlin.home.bean.ArticleList
+import com.android.frameworkkotlin.home.viewmodel.HomeViewModel
+import com.android.frameworkkotlin.utils.obtainViewModel
 
 /**
  * 当前类的注释:首页Fragment
@@ -11,19 +16,23 @@ import com.android.frameworkkotlin.databinding.FragmentHomeBinding
  */
 class HomeFragment : BaseFragment() {
 
-    lateinit var mHomeView: FragmentHomeBinding
-
+   private  lateinit var mHomeViewModel:HomeViewModel
 
     companion object {
         var instance: HomeFragment = HomeFragment()
     }
 
-
     override fun bindView(): View = FragmentHomeBinding.inflate(layoutInflater).root
 
 
     override fun lazyLoad() {
+        mHomeViewModel= obtainViewModel(this,HomeViewModel::class.java)
+         mHomeViewModel.requestArticleList()
+        mHomeViewModel.mArticle.observe(this,
+            Observer<List<ArticleList>> {
 
+
+            })
 
     }
 

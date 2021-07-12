@@ -6,10 +6,15 @@ package com.android.frameworkkotlin.home.bean
  * 邮箱：wanglijian1214@gmail.com
  */
 
+data class ArticleResponse<T>(
+    val errorCode:Int,
+    val errorMsg:String,
+    val data:T
+)
 
-data class Data(
+data class ArticleData(
     val curPage: Int,
-    val datas: List<DataX>,
+    val datas: List<ArticleList>,
     val offset: Int,
     val over: Boolean,
     val pageCount: Int,
@@ -17,7 +22,7 @@ data class Data(
     val total: Int
 )
 
-data class DataX(
+data class ArticleList(
     val apkLink: String,
     val audit: Int,
     val author: String,
@@ -45,7 +50,6 @@ data class DataX(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Tag>,
     val title: String,
     val type: Int,
     val userId: Int,
@@ -53,7 +57,3 @@ data class DataX(
     val zan: Int
 )
 
-data class Tag(
-    val name: String,
-    val url: String
-)

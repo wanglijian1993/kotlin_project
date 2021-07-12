@@ -5,45 +5,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     >
-
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </androidx.core.widget.NestedScrollView>
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@mipmap/ic_banner">
-
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleGravity="bottom"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="?android:attr/actionBarSize"
-                    app:layout_collapseMode="pin"
-                    android:paddingLeft="10dp"
-                    app:title="首页"
-                    app:navigationIcon="@mipmap/ic_main_menu_mine"
-                    app:collapseIcon="@mipmap/ic_launcher"
-                    app:subtitle="@string/app_name">
-
-                </androidx.appcompat.widget.Toolbar>
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
+   <TextView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:gravity="center"
+       android:text="Home"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
