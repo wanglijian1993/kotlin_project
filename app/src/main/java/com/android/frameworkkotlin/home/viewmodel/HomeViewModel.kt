@@ -2,6 +2,7 @@ package com.android.frameworkkotlin.home.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.android.frameworkkotlin.base.BaseViewModel
 import com.android.frameworkkotlin.home.bean.ArticleList
 import com.android.frameworkkotlin.network.ApiServices
 import com.android.frameworkkotlin.network.RetrofitHelper
@@ -14,7 +15,7 @@ import kotlinx.coroutines.launch
  * 作者：WangLiJian on 2021/7/11.
  * 邮箱：wanglijian1214@gmail.com
  */
-class HomeViewModel : ViewModel() {
+class HomeViewModel : BaseViewModel() {
 
 
     var mArticle: MutableLiveData<List<ArticleList>> = MutableLiveData()

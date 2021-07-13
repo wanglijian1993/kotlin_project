@@ -1,7 +1,9 @@
 package com.android.frameworkkotlin.fragments
 
+import android.os.Bundle
 import android.view.View
 import com.android.frameworkkotlin.base.BaseFragment
+import com.android.frameworkkotlin.base.BaseViewModel
 import com.android.frameworkkotlin.databinding.FragmentVideoBinding
 
 /**
@@ -9,7 +11,7 @@ import com.android.frameworkkotlin.databinding.FragmentVideoBinding
  * 作者：WangLiJian on 2020/4/4.
  * 邮箱：wanglijian1214@gmail.com
  */
-   class VideoFragment: BaseFragment() {
+   class VideoFragment: BaseFragment<BaseViewModel,FragmentVideoBinding>() {
 
    lateinit var mViewFragment: FragmentVideoBinding
 
@@ -17,11 +19,13 @@ import com.android.frameworkkotlin.databinding.FragmentVideoBinding
       val instance = VideoFragment()
    }
 
-   override fun bindView(): View = FragmentVideoBinding.inflate(layoutInflater).root
-   override fun lazyLoad() {
-
+   override fun initVIew(savedInstanceState: Bundle?) {
+      TODO("Not yet implemented")
    }
 
+   override fun lazyLoad() {
+      TODO("Not yet implemented")
+   }
 
 
 }

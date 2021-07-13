@@ -1,5 +1,6 @@
 package com.android.frameworkkotlin.home.fragments
 
+import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
@@ -14,7 +15,7 @@ import com.android.frameworkkotlin.utils.obtainViewModel
  * 作者：WangLiJian on 2020/4/4.
  * 邮箱：wanglijian1214@gmail.com
  */
-class HomeFragment : BaseFragment() {
+class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
 
    private  lateinit var mHomeViewModel:HomeViewModel
 
@@ -22,18 +23,22 @@ class HomeFragment : BaseFragment() {
         var instance: HomeFragment = HomeFragment()
     }
 
-    override fun bindView(): View = FragmentHomeBinding.inflate(layoutInflater).root
+
 
 
     override fun lazyLoad() {
         mHomeViewModel= obtainViewModel(this,HomeViewModel::class.java)
-         mHomeViewModel.requestArticleList()
+        mHomeViewModel.requestArticleList()
         mHomeViewModel.mArticle.observe(this,
             Observer<List<ArticleList>> {
 
 
             })
 
+    }
+
+    override fun initVIew(savedInstanceState: Bundle?) {
+        TODO("Not yet implemented")
     }
 
 

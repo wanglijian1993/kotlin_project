@@ -1,7 +1,9 @@
 package com.android.frameworkkotlin.fragments
 
+import android.os.Bundle
 import android.view.View
 import com.android.frameworkkotlin.base.BaseFragment
+import com.android.frameworkkotlin.base.BaseViewModel
 import com.android.frameworkkotlin.databinding.FragmentInformationBinding
 
 /**
@@ -9,17 +11,18 @@ import com.android.frameworkkotlin.databinding.FragmentInformationBinding
  * 作者：WangLiJian on 2020/4/4.
  * 邮箱：wanglijian1214@gmail.com
  */
- class InformationFragment : BaseFragment(){
+ class InformationFragment : BaseFragment<BaseViewModel,FragmentInformationBinding>(){
     lateinit var mInformationView: FragmentInformationBinding
  companion object {
      var instance: InformationFragment = InformationFragment()
  }
 
-    override fun bindView(): View = FragmentInformationBinding.inflate(layoutInflater).root
-
+    override fun initVIew(savedInstanceState: Bundle?) {
+        TODO("Not yet implemented")
+    }
 
     override fun lazyLoad() {
-
+        TODO("Not yet implemented")
     }
 
 
