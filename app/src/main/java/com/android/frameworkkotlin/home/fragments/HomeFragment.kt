@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.android.frameworkkotlin.base.BaseFragment
 import com.android.frameworkkotlin.databinding.FragmentHomeBinding
 import com.android.frameworkkotlin.home.bean.ArticleList
@@ -34,7 +35,6 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
 
 
             })
-
     }
 
     override fun initVIew(savedInstanceState: Bundle?) {

@@ -35,6 +35,17 @@ class HomeViewModel : BaseViewModel() {
         }
 
     }
+
+
+    fun requestBanner(){
+        val launch = CoroutineScope(Dispatchers.Main).launch {
+            RetrofitHelper.INSTANCE.getApi(ApiServices::class.java, ApiServices.SERVER_URL)
+                .requestBanners()
+
+
+        }
+    }
+
 }
 
 

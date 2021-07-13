@@ -21,7 +21,7 @@ abstract class BaseFragment<VM:BaseViewModel,VB :ViewBinding>:Fragment(){
 
 
      lateinit var mViewModel: VM
-     lateinit var mViewBinding: ViewBinding
+     lateinit var mViewBinding: VB
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
