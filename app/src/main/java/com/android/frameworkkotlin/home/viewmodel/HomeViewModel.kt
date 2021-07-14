@@ -3,7 +3,8 @@ package com.android.frameworkkotlin.home.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.android.frameworkkotlin.base.BaseViewModel
-import com.android.frameworkkotlin.home.bean.ArticleList
+import com.android.frameworkkotlin.home.bean.Article
+import com.android.frameworkkotlin.home.bean.Banner
 import com.android.frameworkkotlin.network.ApiServices
 import com.android.frameworkkotlin.network.RetrofitHelper
 import kotlinx.coroutines.CoroutineScope
@@ -18,7 +19,8 @@ import kotlinx.coroutines.launch
 class HomeViewModel : BaseViewModel() {
 
 
-    var mArticle: MutableLiveData<List<ArticleList>> = MutableLiveData()
+    val mArticle: MutableLiveData<MutableList<Article>> by lazy { MutableLiveData<MutableList<Article>>()}
+    val mBanner:MutableLiveData<MutableList<Banner>> by lazy { MutableLiveData<MutableList<Banner>>() }
     /**
      * 请求文章列表
      */
@@ -39,8 +41,12 @@ class HomeViewModel : BaseViewModel() {
 
     fun requestBanner(){
         val launch = CoroutineScope(Dispatchers.Main).launch {
-            RetrofitHelper.INSTANCE.getApi(ApiServices::class.java, ApiServices.SERVER_URL)
-                .requestBanners()
+            val requestBanners =
+                RetrofitHelper.INSTANCE.getApi(ApiServices::class.java, ApiServices.SERVER_URL)
+                    .requestBanners()
+              if(requestBanners.errorCode==0&&requestBanners.data!=null){
+                   mBanner.postValue(requestBanners.data)
+              }
 
 
         }

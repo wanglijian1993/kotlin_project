@@ -14,7 +14,7 @@ data class ArticleResponse<T>(
 
 data class ArticleData(
     val curPage: Int,
-    val datas: List<ArticleList>,
+    val datas: MutableList<Article>,
     val offset: Int,
     val over: Boolean,
     val pageCount: Int,
@@ -22,7 +22,7 @@ data class ArticleData(
     val total: Int
 )
 
-data class ArticleList(
+data class Article(
     val apkLink: String,
     val audit: Int,
     val author: String,

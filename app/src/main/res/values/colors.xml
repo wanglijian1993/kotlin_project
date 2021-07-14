@@ -5,5 +5,8 @@
     <color name="colorAccent">#607d8b</color>
     <color name="textColorPrimary">#dd000000</color>
     <color name="textColorSecondary">#89000000</color>
+    <color name="home_article_title_color">#000000</color>
+    <color name="home_article_time_color">#666666</color>
+    <color name="home_article_author_color">#333333</color>
 
 </resources>

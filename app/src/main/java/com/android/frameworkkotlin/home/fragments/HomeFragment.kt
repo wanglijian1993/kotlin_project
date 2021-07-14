@@ -1,13 +1,12 @@
 package com.android.frameworkkotlin.home.fragments
 
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import androidx.lifecycle.Observer
-import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.frameworkkotlin.base.BaseFragment
 import com.android.frameworkkotlin.databinding.FragmentHomeBinding
-import com.android.frameworkkotlin.home.bean.ArticleList
+import com.android.frameworkkotlin.home.adapter.BannerPageAdapter
+import com.android.frameworkkotlin.home.adapter.HomeArticleAdapter
 import com.android.frameworkkotlin.home.viewmodel.HomeViewModel
 import com.android.frameworkkotlin.utils.obtainViewModel
 
@@ -30,15 +29,22 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
     override fun lazyLoad() {
         mHomeViewModel= obtainViewModel(this,HomeViewModel::class.java)
         mHomeViewModel.requestArticleList()
+        mHomeViewModel.requestBanner()
         mHomeViewModel.mArticle.observe(this,
-            Observer<List<ArticleList>> {
-
-
+            Observer{ articles ->
+                mViewBinding.rvArticle.let {
+                    it.layoutManager=LinearLayoutManager(context)
+                    it.adapter=HomeArticleAdapter(articles)
+                }
             })
+        mHomeViewModel.mBanner.observe(this, Observer {
+            mViewBinding.vpBanner.adapter=BannerPageAdapter(it).apply {
+
+            }
+        })
     }
 
     override fun initVIew(savedInstanceState: Bundle?) {
-        TODO("Not yet implemented")
     }
 
 
