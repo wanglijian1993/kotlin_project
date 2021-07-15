@@ -1,7 +1,6 @@
 package com.android.frameworkkotlin.base
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +26,7 @@ abstract class BaseFragment<VM:BaseViewModel,VB :ViewBinding>:Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val mType = getVbClazz<VB>(this)
+        val mType = getVbClazz<VB>(this,1)
         val mMethod = mType.getDeclaredMethod("inflate", LayoutInflater::class.java)
         mViewBinding= mMethod.invoke(null,layoutInflater) as VB
         return mViewBinding.root
@@ -53,7 +52,7 @@ abstract class BaseFragment<VM:BaseViewModel,VB :ViewBinding>:Fragment(){
      *创建ViewModel生成订阅者
      */
     private fun createObserver():VM{
-        return ViewModelProvider(this).get(getVmClazz(this))
+        return ViewModelProvider(this).get(getVmClazz(this,0))
     }
 
    /**

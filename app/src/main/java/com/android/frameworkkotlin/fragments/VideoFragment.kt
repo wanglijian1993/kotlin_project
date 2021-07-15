@@ -20,11 +20,9 @@ import com.android.frameworkkotlin.databinding.FragmentVideoBinding
    }
 
    override fun initVIew(savedInstanceState: Bundle?) {
-      TODO("Not yet implemented")
    }
 
    override fun lazyLoad() {
-      TODO("Not yet implemented")
    }
 
 

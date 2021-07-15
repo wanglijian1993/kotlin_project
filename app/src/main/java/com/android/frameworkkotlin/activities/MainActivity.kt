@@ -77,7 +77,6 @@ class MainActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.e("wlj","---main---onresume")
     }
     /**
      * 隐藏所有的Fragment

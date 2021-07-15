@@ -3,11 +3,15 @@ package com.android.frameworkkotlin.home.fragments
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.android.frameworkkotlin.R
 import com.android.frameworkkotlin.base.BaseFragment
 import com.android.frameworkkotlin.databinding.FragmentHomeBinding
+import com.android.frameworkkotlin.decorate.SpaceItemDecoration
+import com.android.frameworkkotlin.ext.init
 import com.android.frameworkkotlin.home.adapter.BannerPageAdapter
 import com.android.frameworkkotlin.home.adapter.HomeArticleAdapter
 import com.android.frameworkkotlin.home.viewmodel.HomeViewModel
+import com.android.frameworkkotlin.utils.dp2px
 import com.android.frameworkkotlin.utils.obtainViewModel
 
 /**
@@ -35,6 +39,7 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
                 mViewBinding.rvArticle.let {
                     it.layoutManager=LinearLayoutManager(context)
                     it.adapter=HomeArticleAdapter(articles)
+                    it.addItemDecoration(SpaceItemDecoration(0, dp2px(8f), false))
                 }
             })
         mHomeViewModel.mBanner.observe(this, Observer {
@@ -45,6 +50,9 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
     }
 
     override fun initVIew(savedInstanceState: Bundle?) {
+
+
+
     }
 
 
